@@ -4,7 +4,7 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './signup/signup.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirige la racine vers '/home'
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirige la racine vers '/home'
   { path: 'home', component: HomeComponent }, // Route Home
   { path: 'register', component: RegisterComponent }, // Route Register
   { path: 'login', component: LoginComponent }, // Route Login

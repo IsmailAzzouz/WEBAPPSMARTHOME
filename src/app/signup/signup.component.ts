@@ -14,7 +14,7 @@ import { User } from '../user.model';
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
-export class RegisterComponent {
+export class SignupComponent {
   username: string = '';
   password: string = '';
   passwordFieldType: string = 'password';

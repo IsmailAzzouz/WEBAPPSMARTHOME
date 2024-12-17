@@ -28,7 +28,9 @@ export class LoginComponent {
   togglePasswordVisibility(): void {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
-
+goToregister():void{
+    this.router.navigate(['/register']);
+}
   // Fonction appelée lors de la soumission du formulaire
   onSubmit(): void {
     const body = {

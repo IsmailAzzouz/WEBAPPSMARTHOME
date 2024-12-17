@@ -29,7 +29,7 @@ export class LoginComponent {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 goToregister():void{
-  this.router.navigate(['/register'], { replaceUrl: true }).then(r => console.log("register ?"));
+  this.router.navigate(['/signup'], { replaceUrl: true }).then(r => console.log("register ?"));
 
 }
   // Fonction appelée lors de la soumission du formulaire

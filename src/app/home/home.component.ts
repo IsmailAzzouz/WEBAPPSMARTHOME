@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
         this.router.navigate(["/login"]);
       }else{
         console.log("register url");
-        this.router.navigate(['register']);
+        this.router.navigate(['/signup']);
       }
       return;
     }

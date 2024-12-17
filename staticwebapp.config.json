@@ -2,7 +2,11 @@
   "routes": [
     { "route": "/login", "serve": "/index.html" },
     { "route": "/home", "serve": "/index.html" },
-    { "route": "/register", "serve": "/index.html" },
+    { "route": "/signup", "serve": "/index.html" },
     { "route": "/*", "serve": "/index.html" }
-  ]
+  ],
+"navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/api/*"]  // Exclut les appels API
+  }
 }

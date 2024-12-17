@@ -4,9 +4,10 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './signup/signup.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  {path:'login', component:LoginComponent},
-  {path:'register', component:RegisterComponent},
-  {path:'home', component:HomeComponent},
-
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirige la racine vers '/home'
+  { path: 'home', component: HomeComponent }, // Route Home
+  { path: 'register', component: RegisterComponent }, // Route Register
+  { path: 'login', component: LoginComponent }, // Route Login
+  { path: '**', redirectTo: '/login' } // Gestion des routes inconnues
 ];
+

@@ -66,12 +66,15 @@ export class HomeComponent implements OnInit {
     console.log("HOME COMPONENT TRIGGER");
     this.user = this.userService.getUser();
     if(this.router.url !==  '/home'){
+      console.log("not home url");
       if(this.router.url == "/login"){
+        console.log("login url");
         this.router.navigate(["/login"]);
       }else{
+        console.log("register url");
         this.router.navigate(['register']);
       }
-
+      return;
     }
     if (!this.user) {
       this.router.navigate(["/login"]);

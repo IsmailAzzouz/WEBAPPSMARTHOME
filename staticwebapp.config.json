@@ -1,0 +1,8 @@
+{
+  "routes": [
+    { "route": "/login", "serve": "/index.html" },
+    { "route": "/home", "serve": "/index.html" },
+    { "route": "/register", "serve": "/index.html" },
+    { "route": "/*", "serve": "/index.html" }
+  ]
+}

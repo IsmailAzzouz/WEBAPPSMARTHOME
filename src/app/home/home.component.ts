@@ -63,7 +63,16 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("HOME COMPONENT TRIGGER");
     this.user = this.userService.getUser();
+    if(this.router.url !==  '/home'){
+      if(this.router.url == "/login"){
+        this.router.navigate(["/login"]);
+      }else{
+        this.router.navigate(['register']);
+      }
+
+    }
     if (!this.user) {
       this.router.navigate(["/login"]);
     } else {

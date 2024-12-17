@@ -1,0 +1,91 @@
+
+.device-container .device:not(:hover){
+  transform: scale(0.95);
+  filter: blur(6px) brightness(95%);
+}
+
+.device-container:not(:hover) .device{
+  transform: scale(1);
+  filter: blur(0px);
+}
+.device-header{
+  display: flex;
+  align-items: center;
+
+}
+
+
+
+.toggle-switch .slider:before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+.toggle-switch input:checked + .slider {
+  background-color: #4caf50; /* Green when ON */
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.5); /* Green glow effect when ON */
+}
+.toggle-switch:hover input:checked + .slider  {
+  background-color: #4caf50; /* Green when ON */
+  box-shadow: 0 0 15px rgba(76, 175, 80, 1); /* Green glow effect when ON */
+}
+
+.toggle-switch input:checked + .slider:before {
+  transform: translateX(26px); /* Move slider to the right */
+}
+
+.toggle-switch input:not(:checked) + .slider {
+  background-color: #f44336; /* Red when OFF */
+  box-shadow: 0 0 20px rgba(244, 67, 54, 0.5); /* Red glow effect when OFF */
+}
+.toggle-switch:hover input:not(:checked) + .slider {
+  background-color: #f44336; /* Red when OFF */
+  box-shadow: 0 0 15px rgba(244, 67, 54,1); /* Red glow effect when OFF */
+}
+
+.toggle-switch input:not(:checked) + .slider:before {
+  transform: translateX(0); /* Slider stays on the left */
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,    /* Outline icon (0 is outline, 1 is filled) */
+    'wght' 400,  /* Normal weight (can range from 100 to 700) */
+    'GRAD' 0,    /* No gradation */
+    'opsz' 24;   /* Size of the icon */
+}
+
+
+.logoutbutton {
+  background-color: #333;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.logoutbutton:hover {
+  background-color: #444;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.logoutbutton:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+}
+

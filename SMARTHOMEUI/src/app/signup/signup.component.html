@@ -1,0 +1,20 @@
+<div class="login-container">
+  <h2>Register</h2>
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" [(ngModel)]="username" required class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input [type]="passwordFieldType" id="password" name="password" [(ngModel)]="password" required class="form-control" />
+      <button type="button" (click)="togglePasswordVisibility()" class="show-password-btn">
+        {{ passwordFieldType === 'password' ? 'Show' : 'Hide' }} Password
+      </button>
+    </div>
+
+    <button type="submit" [disabled]="!loginForm.form.valid" class="submit-btn">Register</button>
+  </form>
+  <a href="/login">Already have an account ? Login</a>
+</div>

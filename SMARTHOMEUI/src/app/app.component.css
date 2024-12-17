@@ -1,0 +1,10 @@
+/* Set the body's background to black */
+body {
+  background-color: #1a1a1a;  /* Matches the login container background */
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;  /* Stack children vertically */
+  justify-content: center; /* Vertically center the content */
+  align-items: center;     /* Horizontally center the content */
+}

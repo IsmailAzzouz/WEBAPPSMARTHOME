@@ -1,0 +1,575 @@
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=delete" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined"
+        rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+  <style>
+    /* Add the necessary CSS styles here */
+    .delete-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      transition: all 0.3s ease;
+      font-size: 24px;
+      width: fit-content;
+      height: 12px;
+    }
+
+    .delete-button .material-symbols-outlined {
+      font-size: 24px; /* Icon size */
+      color: white; /* Default color */
+      transition: all 0.3s ease; /* Transition for smooth hover effect */
+    }
+.material-icons{
+  color: white;
+  transition: all 0.3s ease; /* Transition for smooth hover effect */
+}
+    .material-icons.living{
+      transform: translateY(2px);
+    }
+    .material-icons:hover{
+      text-shadow: 0 0 10px rgb(255, 255, 255), 0 0 20px rgba(255, 255, 255, 0.7); /* Stronger red glow */
+    }
+    .material-icons.edit{
+      transition: all 0.3s ease; /* Transition for smooth hover effect */
+
+    }
+    .material-icons.edit:hover{
+      color: #fff089;
+      text-shadow: 0 0 10px rgb(255, 241, 89), 0 0 20px rgb(255, 241, 89); /* Stronger red glow */
+      transform: rotateZ(-47deg);
+
+    }
+    .material-icons.add:hover{
+      color: #8bd2ff;
+      text-shadow: 0 0 10px rgb(27, 114, 227), 0 0 20px rgba(24, 60, 206, 0.7); /* Stronger red glow */
+      animation: expends 0.3s ease-in-out; /* Shake animation */
+
+    }
+
+
+
+    /* Hover effect for glowing and shaking */
+    .delete-button .material-symbols-outlined:hover {
+      color: #f44336; /* Red color on hover */
+      text-shadow: 0 0 10px rgba(244, 67, 54, 1), 0 0 20px rgba(244, 67, 54, 0.7); /* Stronger red glow */
+      animation: shake 0.3s ease forwards; /* Shake animation */
+    }
+    .material-icons.done{
+        color: #00ff00;
+    }
+    .material-icons.done:hover{
+      color: #54ff54;
+      text-shadow: 0 0 10px rgb(60, 244, 54), 0 0 20px rgba(89, 244, 54, 0.7); /* Stronger red glow */
+      animation: expends 0.3s ease-in-out; /* Shake animation */
+    }
+    .material-icons.close{
+      color: #ff0000;
+    }
+    .material-icons.close:hover{
+      color: #ff5454;
+      text-shadow: 0 0 10px rgb(244, 98, 54), 0 0 20px rgba(244, 133, 54, 0.7); /* Stronger red glow */
+      animation: expends 0.3s ease-in-out; /* Shake animation */
+    }
+    /* When the modal itself is not hovered, apply blur to the buttons */
+
+
+    .modal:not(:hover) .modal-button{
+      filter: blur(0px);
+    }
+    .modal:hover .modal-button:not(:hover){
+      filter: blur(5px);
+    }
+    .modal:hover .modal-button:hover{
+      filter: blur(0px);
+    }
+
+    body {
+      background-color: #1a1a1a;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .home-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    }
+    .header{
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      text-align: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Neon effect */
+      flex-direction: column;
+      margin-bottom: 25px;
+    }
+
+
+    .welcome-message {
+      text-align: center;
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Neon effect */
+    }
+
+    .button-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .create-room-button {
+      background-color: #333;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      transition: 0.3s;
+      display: flex;
+      text-align: center;
+
+
+    }
+    .create-room-button p {
+      margin-bottom: 0;
+      margin-top: 5px;
+      height: 24px;
+      padding-left: 7px;
+    }
+
+    .create-room-button:hover {
+      background-color: #444;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .room-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .room-container .room:hover {
+      transform: scale(1.1); /* Enlarge the hovered room */
+      flex-grow: 2; /* Let the hovered room grow bigger */
+      box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.5);
+
+    }
+    .room-container .room:not(:hover) {
+      transform: scale(0.9); /* Shrink the non-hovered rooms */
+      flex-grow: 0.5; /* Make non-hovered rooms shrink */
+      filter: blur(5px) brightness(85%);
+
+    }
+    .room-container:not(:hover) .room {
+      transform: scale(1); /* Scale all rooms back to 1.0 */
+      filter: blur(0px);
+    }
+
+
+    .room {
+      background: linear-gradient(145deg, #1a1a1a, #333);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, flex-grow 0.3s ease; /* Smooth transition */
+    }
+
+    .room-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      color: #fff;
+      font-size: 1.5rem;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Neon effect */
+      transition: transform 0.3s ease;
+    }
+    .room:hover .room-header h3 {
+      transform: scale(1.1); /* Slightly enlarge the room name */
+    }
+
+    .room-header h3 {
+      margin: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .edit-button, .delete-button {
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .edit-button:hover, .delete-button:hover {
+      color: #ff0; /* Neon yellow on hover */
+    }
+
+    .add-device-button {
+      background-color: #555;
+      color: #fff;
+      font-size: 14px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      margin-bottom: 15px;
+    }
+    .device-name{
+      color: white;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Neon effect */
+      margin: 0;
+      width: 125px;
+      text-align: left;
+
+    }
+    .add-device-button:hover {
+      background-color: #666;
+    }
+
+    .device {
+      background: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
+      backdrop-filter: blur(10px);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      padding: 15px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+    .device-container .device:hover{
+      transform: scale(1.02);
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.83);
+
+    }
+
+    .device-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      justify-items: center;
+      flex-direction: column;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .device-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .device button {
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .device button:hover {
+      color: #ff0; /* Neon yellow on hover */
+    }
+
+    .edit-device-button, .delete-device-button {
+      font-size: 14px;
+      margin-left: 10px;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(15px);
+    }
+
+    .modal {
+      background: #333;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      width: 400px;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Neon effect */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+    }
+
+    .modal input {
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #555;
+      border-radius: 8px;
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .modal input:focus:hover{
+      border-color: #ffffff; /* White border on focus */
+      outline: none;
+      background-color: #262626; /* Slightly lighter background on focus */
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.4); /* Subtle glow effect */
+    }
+    .modal input:hover:not(:focus){
+      border-color: rgba(252, 252, 252, 0.57); /* White border on focus */
+      outline: none;
+      background-color: #262626; /* Slightly lighter background on focus */
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.4); /* Subtle glow effect */
+    }
+
+    .modal button {
+
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+
+    .modal-button{
+
+      background-color: transparent;
+    }
+    .device-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .toggle-switch input {
+      opacity: 0; /* Hide the default checkbox */
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-switch .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 50px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Subtle shadow for the slider */
+    }
+
+
+    /* Keyframe animation for shaking effect */
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-3px); }
+      50% { transform: translateX(3px); }
+      75% { transform: translateX(-3px); }
+      100% { transform: translateX(0); }
+    }
+    @keyframes expends {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1.15); }
+      75% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+
+
+<div class="home-container">
+  <button class="logoutbutton" *ngIf="user" (click)="disconnect()">Logout</button>
+  <div class="header">
+    <div *ngIf="user">
+      <h1>{{ user.username }}'s Dashboard</h1>
+
+    </div>
+    <button class="create-room-button" (click)="openRoomModal()"><span class="material-icons add"  >add_business</span>  <p>Add new Room</p></button>
+  </div>
+
+
+  <!-- Room Container -->
+  <div class="room-container">
+    <!-- Display the list of rooms -->
+    <div *ngFor="let room of rooms" class="room">
+      <div class="room-header">
+        <h3><span class="material-icons living">living</span>  {{ room.name }}</h3>
+        <button class="edit-button"><i class="fas fa-pencil-alt"></i></button>
+
+        <!-- Delete Button with SVG -->
+        <div>
+          <button class="delete-button" (click)="openDeviceModal(room.id.toString())">
+            <span class="material-icons add"  >control_point</span>
+          </button>
+          <button class="delete-button"(click)="openUpdateRoomModal(room.id.toString(),room.name)" ><span class="material-icons edit"  >edit</span></button>
+
+          <button class="delete-button" (click)="deleteRoom(room.id)">
+            <span class="material-symbols-outlined">delete</span>
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- Button to open modal for adding a device to this room -->
+
+
+      <!-- List devices in the room -->
+      <ul class="device-container">
+        <li *ngFor="let device of room.devices" class="device">
+
+          <div class="device-content">
+            <div class="device-header">
+              <span class="material-icons edit"  >power</span>
+
+            <h4 class="device-name">
+
+              {{ device.name }}</h4>
+            </div>
+            <!-- Toggle Switch -->
+            <label class="toggle-switch">
+              <input type="checkbox"
+                     [checked]="device.state"
+                     (change)="toggleDeviceState(room.id.toString(), device)" />
+              <span class="slider"></span>
+            </label>
+
+            <!-- Delete Device Button -->
+            <div>
+              <button class="delete-button" (click)="deleteDevice(room.id.toString(), device.id.toString())">
+                <span class="material-symbols-outlined">delete</span>
+              </button>
+              <button class="edit-device-button"(click)="openUpdateDeviceModal(room.id.toString(),device.id.toString(),device.name)"><span class="material-icons edit"  >edit</span></button>
+            </div>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isRoomModalOpen" class="modal-overlay">
+  <div class="modal">
+    <h3>Create New Room</h3>
+    <label for="roomName">Room Name:</label>
+    <input [(ngModel)]="newRoomName" id="roomName" type="text" placeholder="Enter room name" />
+    <div>
+      <button class="modal-button" (click)="createRoom()"><span class="material-icons done">
+done
+</span></button>
+      <button class="modal-button" (click)="closeRoomModal()"><span class="material-icons close">
+close
+</span></button>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- Modal for adding a device -->
+<div *ngIf="isDeviceModalOpen" class="modal-overlay">
+  <div class="modal">
+    <h3>Add New Device</h3>
+    <label for="deviceName">Device Name:</label>
+    <input [(ngModel)]="newDeviceName" id="deviceName" type="text" placeholder="Enter device name" />
+
+    <div>
+      <button class="modal-button" (click)="createDevice()"><span class="material-icons done">
+done
+</span></button>
+      <button class="modal-button" (click)="closeDeviceModal()">
+        <span class="material-icons close">close</span>
+      </button>
+    </div>
+
+
+
+
+  </div>
+</div>
+<!-- Modal for updating a room -->
+<div *ngIf="isUpdateRoomModalOpen" class="modal-overlay">
+  <div class="modal">
+    <h3>Update Room Name</h3>
+    <label for="updatedRoomName">Room Name:</label>
+    <input [(ngModel)]="updatedRoomName" id="updatedRoomName" type="text" placeholder="Enter new room name" />
+    <div>
+      <button class="modal-button" (click)="updateRoom()">
+        <span class="material-icons done">done</span>
+      </button>
+      <button class="modal-button" (click)="closeUpdateRoomModal()">
+        <span class="material-icons close">close</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for updating a device -->
+<div *ngIf="isUpdateDeviceModalOpen" class="modal-overlay">
+  <div class="modal">
+    <h3>Update Device Name</h3>
+    <label for="updatedDeviceName">Device Name:</label>
+    <input [(ngModel)]="updatedDeviceName" id="updatedDeviceName" type="text" placeholder="Enter new device name" />
+    <div>
+      <button class="modal-button" (click)="updateDevice()">
+        <span class="material-icons done">done</span>
+      </button>
+      <button class="modal-button" (click)="closeUpdateDeviceModal()">
+        <span class="material-icons close">close</span>
+      </button>
+    </div>
+  </div>
+</div>
+

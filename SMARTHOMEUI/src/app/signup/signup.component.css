@@ -1,0 +1,119 @@
+/* Set the body's background to black */
+body {
+  background-color: #1a1a1a;  /* Matches the login container background */
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;  /* Stack children vertically */
+  justify-content: center; /* Vertically center the content */
+  align-items: center;     /* Horizontally center the content */
+}
+.login-container {
+
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;  /* Stack children vertically */
+  justify-content: center; /* Vertically center the content */
+  align-items: center;     /* Horizontally center the content */
+  height: 55vh;           /* Full viewport height for vertical centering */
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Softer shadow for subtle depth */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #1a1a1a; /* Deep gray for container background */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff; /* White text for contrast */
+}
+
+.form-group {
+  margin-bottom: 20px;
+  width: 100%; /* Make sure the form fields take full width */
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #cccccc; /* Soft gray for labels */
+}
+
+.input, .form-control {
+  width: 100%; /* Full width for input fields */
+  padding: 12px;
+  border: 1px solid #333333; /* Subtle border for field outline */
+  border-radius: 8px;
+  background-color: #1a1a1a; /* Match the container background */
+  font-size: 16px;
+  color: #ffffff; /* White text */
+  transition: all 0.3s ease;
+}
+
+.input:focus, .form-control:focus {
+  border-color: #ffffff; /* White border on focus */
+  outline: none;
+  background-color: #262626; /* Slightly lighter background on focus */
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4); /* Subtle glow effect */
+}
+
+.show-password-btn {
+  background: none;
+  border: none;
+  color: #cccccc; /* Soft gray for button text */
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 5px;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.show-password-btn:hover {
+  color: #ffffff; /* Bright white on hover */
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #333333; /* Neutral dark gray for button */
+  color: #ffffff; /* White text */
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Subtle glow for depth */
+}
+
+.submit-btn:hover {
+  background-color: #4d4d4d; /* Slightly lighter gray on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.submit-btn:disabled {
+  background-color: #2a2a2a; /* Muted dark gray for disabled state */
+  color: #888888; /* Subtle gray text */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #cccccc; /* Light gray for links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #ffffff; /* White text on hover */
+}

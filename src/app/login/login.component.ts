@@ -22,6 +22,7 @@ export class LoginComponent {
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument
       .body.style.backgroundColor = '#1a1a1a';
+
   }
 
   // Toggle pour afficher/masquer le mot de passe

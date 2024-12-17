@@ -52,7 +52,9 @@ export class RegisterComponent {
 
         this.userService.setUser(user); // Save user to the service
         console.log("new user saved", this.userService.getUser());
-        this.router.navigate(['/home']);
+        if (response && response.id) {
+          this.router.navigate(['/home']);
+        }
         // Vous pouvez rediriger ou afficher un message de succès ici
       },
       (error) => {
@@ -64,5 +66,9 @@ export class RegisterComponent {
   // Fonction pour afficher/masquer le mot de passe
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
+  }
+  goTologin():void{
+    this.router.navigate(['/login'], { replaceUrl: true }).then(r => console.log("login ?"));
+
   }
 }

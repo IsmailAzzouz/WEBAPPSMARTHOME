@@ -16,5 +16,5 @@
 
     <button type="submit" [disabled]="!loginForm.form.valid" class="submit-btn">Register</button>
   </form>
-  <a href="/login">Already have an account ? Login</a>
+  <a (click)="goTologin()">Already have an account ? Login</a>
 </div>
